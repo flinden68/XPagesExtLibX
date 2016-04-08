@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- ******************************************************************* -->
+	<!--                                                                     -->
+	<!-- © Copyright GBS Inc 2011                                            -->
+	<!--                                                                     -->
+	<!-- Licensed under the Apache License, Version 2.0 (the "License");     -->
+	<!-- you may not use this file except in compliance with the License.    -->
+	<!-- You may obtain a copy of the License at:                            -->
+	<!--                                                                     -->
+	<!-- http://www.apache.org/licenses/LICENSE-2.0                          -->
+	<!--                                                                     -->
+	<!-- Unless required by applicable law or agreed to in writing, software -->
+	<!-- distributed under the License is distributed on an "AS IS" BASIS,   -->
+	<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or     -->
+	<!-- implied. See the License for the specific language governing        -->
+	<!-- permissions and limitations under the License.                      -->
+	<!--                                                                     -->
+	<!-- ******************************************************************* -->
+<faces-config>
+	<faces-config-extension>
+		<namespace-uri>http://www.ibm.com/xsp/coreex</namespace-uri>
+	    <default-prefix>xe</default-prefix>
+	    <designer-extension>
+	      <control-subpackage-name>cloudant</control-subpackage-name>
+	    </designer-extension>
+	</faces-config-extension>
+	<group>
+    <group-type>com.ibm.xsp.extlib.cloudant.group.connection_control</group-type>
+    <property>
+      <description>%property.accountName.group.connection.descr%</description>
+      <display-name>%property.accountName.group.connection.name%</display-name>
+      <property-name>accountName</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension>
+          <category>data</category>
+          <editor>com.ibm.std.String</editor>
+        </designer-extension>
+      </property-extension>
+    </property>
+    <property>
+      <description>%property.userName.group.connection.descr%</description>
+      <display-name>%property.userName.group.connection.name%</display-name>
+      <property-name>userName</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension>
+          <category>data</category>
+          <editor>com.ibm.std.String</editor>
+        </designer-extension>
+      </property-extension>
+    </property>
+    <property>
+      <description>%property.password.group.connection.descr%</description>
+      <display-name>%property.password.group.connection.name%</display-name>
+      <property-name>password</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension>
+          <category>data</category>
+          <editor>com.ibm.std.String</editor>
+        </designer-extension>
+      </property-extension>
+    </property>
+
+    <group-extension>
+      <designer-extension>
+        <tags>
+                    group-in-control
+                </tags>
+      </designer-extension>
+    </group-extension>
+  </group>
+  
+	<group>
+    <group-type>com.ibm.xsp.extlib.cloudant.group.connectionManager</group-type>
+    <property>
+      <description>%property.connectionManager.descr%</description>
+      <display-name>%property.connectionManager.name%</display-name>
+      <property-name>connectionManager</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension>
+          <editor>com.ibm.xsp.extlib.designer.tooling.editor.XPageControlIDEditor</editor>
+          <editor-parameter>
+                        http://www.ibm.com/xsp/coreex|cloudantConnectionManager
+                    </editor-parameter>
+        </designer-extension>
+      </property-extension>
+    </property>
+    <group-extension>
+      <designer-extension>
+        <tags>
+                    group-in-complex
+                </tags>
+      </designer-extension>
+    </group-extension>
+  </group>
+  
+  <group>
+    <group-type>com.ibm.xsp.extlib.cloudant.group.query</group-type>
+    <property>
+      <description>%property.dbName.descr%</description>
+      <display-name>%property.dbName.name%</display-name>
+      <property-name>dbName</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension/>
+      </property-extension>
+    </property>
+    <property>
+      <description>%property.fullClassName.descr%</description>
+      <display-name>%property.fullClassName.name%</display-name>
+      <property-name>fullClassName</property-name>
+      <property-class>java.lang.String</property-class>
+      <property-extension>
+        <designer-extension/>
+      </property-extension>
+    </property>
+   </group>
+  
+  <component>
+    <description>%component.cloudantConnectionManager.descr%</description>
+    <display-name>%component.cloudantConnectionManager.name%</display-name>
+    <component-type>com.ibm.xsp.extlib.cloudant.CloudantConnectionManager</component-type>
+    <component-class>com.ibm.xsp.extlib.cloudant.component.connection.UICloudantConnectionManager</component-class>
+    <group-type-ref>com.ibm.xsp.extlib.cloudant.group.connection_control</group-type-ref>
+
+    <component-extension>
+      <base-component-type>javax.faces.Component</base-component-type>
+      <component-family>com.ibm.xsp.extlib.cloudant.CloudantConnectionManager</component-family>
+      <renderer-type>com.ibm.xsp.extlib.cloudant.CloudantConnectionManager</renderer-type>
+      <tag-name>jdbcConnectionManager</tag-name>
+      <designer-extension>
+        <in-palette>true</in-palette>
+        <category>Data Access</category>
+        <tags>
+                	no-faces-config-renderer
+                	no-rendered-output
+                </tags>
+      </designer-extension>
+    </component-extension>
+  </component>
+  
+  <complex-type>
+    <description>%complex-type.cloudantQuery.descr%</description>
+    <display-name>%complex-type.cloudantQuery.name%</display-name>
+    <complex-id>com.ibm.xsp.extlib.cloudant.model.CloudantDataSource</complex-id>
+    <complex-class>com.ibm.xsp.extlib.cloudant.model.CloudantDataSource</complex-class>
+    <group-type-ref>com.ibm.xsp.extlib.cloudant.group.connectionManager</group-type-ref>
+    <group-type-ref>com.ibm.xsp.extlib.cloudant.group.query</group-type-ref>
+
+    <complex-extension>
+      <tag-name>cloudantQuery</tag-name>
+      <base-complex-id>com.ibm.xsp.extlib.model.DataAccessorBlockSource</base-complex-id>
+    </complex-extension>
+  </complex-type>
+</faces-config>

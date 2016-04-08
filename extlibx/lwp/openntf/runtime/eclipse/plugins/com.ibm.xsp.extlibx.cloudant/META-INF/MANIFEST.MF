@@ -6,11 +6,21 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.ibm.xsp.extlibx.cloudant.Activator
 Bundle-Vendor: IBM
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.ibm.xsp.library,
+Import-Package: com.cloudant.client.api,
+ com.ibm.xsp.library,
  org.eclipse.core.runtime;version="3.4.0",
  org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
-Require-Bundle: com.ibm.commons
+Require-Bundle: org.eclipse.core.runtime,
+ com.ibm.commons,
+ com.ibm.commons.jdbc,
+ com.ibm.commons.vfs,
+ com.ibm.designer.runtime,
+ com.ibm.domino.services,
+ com.ibm.pvc.jndi.provider.java,
+ org.apache.common.dbcp,
+ com.ibm.xsp.extsn,
+ com.ibm.xsp.extlib
 Bundle-ClassPath: .,
  lib/cloudant-client-2.4.1.jar,
  lib/cloudant-http-2.4.1.jar,
